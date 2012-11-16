@@ -19,7 +19,7 @@ result = concat $ map (\x -> concatMap (sign x) ps) [0..3]
     where
         ps = perms [1..3]
 
---stringify :: [[Int]] -> String
+stringify :: [[Int]] -> String
 stringify xs = concat $ map (\x -> (listToString x) ++ "\n") xs
     where
         listToString = foldr (\fst rst -> (show fst) ++ " " ++ rst) ""
