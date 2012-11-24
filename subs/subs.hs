@@ -4,7 +4,6 @@
 import Data.List
 
 subs :: String -> String -> [Int]
-subs xs "" = []
 subs "" ys = []
 subs (x:xs) ys = if isPrefixOf ys (x:xs) then 1:rest else rest
     where rest = map (+1) $ subs xs ys
