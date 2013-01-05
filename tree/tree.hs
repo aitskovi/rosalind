@@ -1,8 +1,10 @@
 import Data.List
 import Data.Maybe
 
-tree :: (Eq a) => [[a]] -> Int
-tree xs = length (join xs) - 1
+-- Implementation for a general graph.
+-- Solves the number of components question.
+graph :: (Eq a) => [[a]] -> Int
+graph xs = length (join xs) - 1
 
 -- Returns a list of sets that are disjoint.
 -- Any two sets that intersect are joined.
@@ -20,4 +22,15 @@ input (x:xs) = map (:[]) [1..n] ++ map (\x -> map read (words x)) xs
     where
         n = (read x)::Int
 
-main = interact $ show . tree . input . lines
+-- main = interact $ show . graph . input . lines
+
+-- Implementation for a tree
+-- In a tree n - m = 1. So n - m - 1 is the number of missing edges.
+-- Where n = num nodes and m = num edges
+
+tree :: [String] -> Int
+tree (x:xs) = n - (length xs) - 1
+    where
+        n = (read x)::Int
+
+main = interact $ show . tree . lines
